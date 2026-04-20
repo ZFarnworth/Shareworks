@@ -77,33 +77,26 @@
       overflow: hidden;
     }
 
-    .hero-shift {
-      font-size: clamp(5rem, 14vw, 12rem);
+    .hero-wordmark {
+      font-size: clamp(4rem, 11vw, 10rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 0.9;
+      letter-spacing: -0.03em;
+      line-height: 1;
       color: #fff;
+      display: block;
     }
 
-    .hero-work-wrap {
-      display: inline-block;
+    .hero-wordmark .highlight {
       background: var(--cream);
-      padding: 0.08em 0.28em;
-      margin-top: 0.05em;
-    }
-    .hero-work {
-      font-size: clamp(3.2rem, 8.5vw, 7.5rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1;
       color: var(--black);
+      padding: 0 0.12em;
     }
 
     .hero-rule {
-      width: 220px;
+      width: 180px;
       height: 3px;
       background: var(--cream);
-      margin: 2.2rem 0 1.1rem;
+      margin: 2rem 0 1rem;
     }
 
     .hero-tagline {
@@ -552,10 +545,7 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div>
-      <div class="hero-shift">SHIFT</div>
-      <div class="hero-work-wrap"><span class="hero-work">WORK</span></div>
-    </div>
+    <span class="hero-wordmark">SHIFT<span class="highlight">WORKS</span></span>
     <div class="hero-rule"></div>
     <p class="hero-tagline">We shift the way you work.</p>
     <div class="hero-scroll">Scroll</div>
