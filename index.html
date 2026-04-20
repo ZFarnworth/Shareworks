@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shiftwork — We shift the way you work.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #1A1A1A;
+      --cream:   #FCF8F4;
+      --warmgray:#777068;
+      --dgray:   #555555;
+      --divider: #333333;
+      --cdivide: #E0DAD3;
+      --font:    'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--black);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(26,26,26,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+
+    nav a.nav-cta {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--cream);
+      padding: 0.55rem 1.4rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    nav a.nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-shift {
+      font-size: clamp(5rem, 14vw, 12rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      color: #fff;
+    }
+
+    .hero-work-wrap {
+      display: inline-block;
+      background: var(--cream);
+      padding: 0.08em 0.28em;
+      margin-top: 0.05em;
+    }
+    .hero-work {
+      font-size: clamp(3.2rem, 8.5vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .hero-rule {
+      width: 220px;
+      height: 3px;
+      background: var(--cream);
+      margin: 2.2rem 0 1.1rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      font-style: italic;
+      color: var(--dgray);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 3rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-scroll::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: #333;
+    }
+
+    /* ── SECTION DEFAULTS ── */
+    section { padding: 6rem 3rem; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .rule {
+      height: 1px;
+      margin: 2rem 0;
+    }
+
+    /* ── TRACK RECORD ── */
+    #track-record {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    #track-record .section-label { color: #777068; }
+
+    .track-rule-top {
+      width: 100%;
+      height: 5px;
+      background: var(--black);
+      margin-bottom: 0;
+    }
+
+    .track-rule-thin {
+      height: 1px;
+      background: var(--cdivide);
+      margin: 1.5rem 0 2.2rem;
+    }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 3rem;
+      align-items: start;
+    }
+
+    .track-divider-v {
+      background: var(--cdivide);
+      width: 1px;
+    }
+
+    .track-stat {
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .track-unit {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+      color: var(--black);
+    }
+
+    .track-rule-short {
+      width: 60px;
+      height: 2px;
+      background: var(--black);
+      margin: 1.2rem 0 1rem;
+    }
+
+    .track-desc {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: #777068;
+      max-width: 380px;
+    }
+
+    .track-bottom {
+      background: var(--black);
+      margin: 4rem -3rem -6rem;
+      padding: 1.4rem 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--cream);
+    }
+
+    /* ── WORLD HAS CHANGED ── */
+    #changed {
+      background: var(--black);
+      color: #fff;
+    }
+
+    #changed .section-label { color: var(--dgray); }
+
+    .changed-layout {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 3.5rem;
+      align-items: start;
+    }
+
+    .changed-headline {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .changed-body {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--dgray);
+      margin-top: 1.8rem;
+    }
+
+    .changed-divider-v {
+      background: var(--divider);
+    }
+
+    .changed-stats { display: flex; flex-direction: column; gap: 0; }
+
+    .changed-stat-item { padding: 1.5rem 0; }
+    .changed-stat-item + .changed-stat-item {
+      border-top: 1px solid var(--divider);
+    }
+
+    .changed-stat-num {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .changed-stat-desc {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--dgray);
+      margin-top: 0.5rem;
+    }
+
+    /* ── COST OF WAITING ── */
+    #cost {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    #cost .section-label { color: #777068; }
+
+    .cost-intro {
+      font-size: 0.9rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: #777068;
+      max-width: 760px;
+      margin-bottom: 2rem;
+    }
+
+    .cost-rows { display: flex; flex-direction: column; }
+
+    .cost-row {
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      gap: 0 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--cdivide);
+    }
+    .cost-row:first-child { border-top: 1px solid var(--cdivide); }
+
+    .cost-bar { background: var(--black); border-radius: 1px; }
+
+    .cost-content {}
+    .cost-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 0.45rem;
+    }
+    .cost-body {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: #777068;
+    }
+
+    /* ── WHAT WE CAN DO ── */
+    #what {
+      background: var(--black);
+      color: #fff;
+    }
+
+    #what .section-label { color: var(--dgray); }
+
+    .what-subhead {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2.5rem;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .what-card {
+      padding: 0 2rem 0 0;
+      border-right: 1px solid var(--divider);
+    }
+    .what-card:last-child { border-right: none; padding-right: 0; }
+    .what-card:not(:first-child) { padding-left: 2rem; }
+
+    .what-stat {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .what-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--divider);
+      margin: 1.2rem 0;
+    }
+
+    .what-desc {
+      font-size: 0.8rem;
+      line-height: 1.65;
+      color: var(--dgray);
+    }
+
+    /* ── CTA / LET'S MEET ── */
+    #meet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+      padding: 0;
+    }
+
+    .meet-left {
+      background: var(--cream);
+      color: var(--black);
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .meet-headline {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .meet-rule {
+      width: 80%;
+      height: 2px;
+      background: var(--black);
+      margin-bottom: 1.4rem;
+    }
+
+    .meet-note {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #777068;
+    }
+
+    .meet-cta {
+      display: inline-block;
+      margin-top: 2rem;
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+    }
+    .meet-cta:hover { opacity: 0.85; }
+
+    .meet-right {
+      background: var(--black);
+      color: #fff;
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .meet-brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    .meet-divider {
+      height: 1px;
+      background: var(--divider);
+      margin: 1.6rem 0;
+    }
+
+    .meet-person-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .meet-person-title {
+      font-size: 0.78rem;
+      color: var(--dgray);
+      margin-bottom: 1.2rem;
+    }
+
+    .meet-contact {
+      font-size: 0.82rem;
+      color: var(--dgray);
+      line-height: 1.8;
+      margin-top: 0.4rem;
+    }
+
+    .meet-contact a {
+      color: var(--cream);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .meet-contact a:hover { opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      border-top: 1px solid #222;
+      padding: 1.4rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer .foot-logo {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #444;
+    }
+
+    footer .foot-note {
+      font-size: 0.65rem;
+      color: #333;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 4rem; }
+
+      .track-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .track-divider-v { display: none; }
+
+      .changed-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .changed-divider-v { display: none; }
+
+      .what-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .what-card {
+        border-right: none;
+        padding: 0;
+      }
+      .what-card:not(:first-child) { padding-left: 0; }
+
+      #meet {
+        grid-template-columns: 1fr;
+      }
+      .meet-left, .meet-right {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .what-grid { grid-template-columns: 1fr; }
+      .track-bottom { margin: 3rem -1.5rem -4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">SHIFT<span>WORK</span></a>
+    <a href="#meet" class="nav-cta">Let's Meet</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div>
+      <div class="hero-shift">SHIFT</div>
+      <div class="hero-work-wrap"><span class="hero-work">WORK</span></div>
+    </div>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">We shift the way you work.</p>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section id="track-record">
+    <div class="track-rule-top"></div>
+    <p class="section-label" style="margin-top:1.8rem;">The Track Record</p>
+    <div class="track-rule-thin"></div>
+    <div class="track-grid">
+      <!-- Jordan -->
+      <div>
+        <div class="track-stat">$100M+</div>
+        <div class="track-unit">ARR</div>
+        <div class="track-rule-short"></div>
+        <p class="track-desc">Generated through production AI systems built and shipped at scale.</p>
+      </div>
+      <div class="track-divider-v"></div>
+      <!-- Zac -->
+      <div>
+        <div class="track-stat">2,000+</div>
+        <div class="track-unit">HOURS</div>
+        <div class="track-rule-short"></div>
+        <p class="track-desc">Of manual work automated. $200K+ in headcount costs eliminated.</p>
+      </div>
+    </div>
+    <div class="track-bottom">
+      We don't advise. We build. We don't get paid unless you see results.
+    </div>
+  </section>
+
+  <!-- WORLD HAS CHANGED -->
+  <section id="changed">
+    <p class="section-label">The World Has Changed.</p>
+    <div class="changed-layout">
+      <div>
+        <h2 class="changed-headline">THE WORLD<br>HAS CHANGED.</h2>
+        <p class="changed-body">
+          The companies that embed AI into operations today will dominate on cost,
+          speed, and quality. Those that wait will struggle to compete. This is not
+          a future trend — it's happening right now.
+        </p>
+      </div>
+      <div class="changed-divider-v"></div>
+      <div class="changed-stats">
+        <div class="changed-stat-item">
+          <div class="changed-stat-num">87%</div>
+          <p class="changed-stat-desc">of construction firms report a significant gap between AI potential and current adoption — the window to move first is open right now.</p>
+        </div>
+        <div class="changed-stat-item">
+          <div class="changed-stat-num">$1.6T</div>
+          <p class="changed-stat-desc">McKinsey's estimated productivity opportunity in construction through AI and digitization by 2030.</p>
+        </div>
+        <div class="changed-stat-item">
+          <div class="changed-stat-num">20%</div>
+          <p class="changed-stat-desc">Productivity increase achievable in construction through AI adoption, according to McKinsey Global Institute.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST OF WAITING -->
+  <section id="cost">
+    <p class="section-label">The Cost of Waiting</p>
+    <p class="cost-intro">
+      Every month without an AI strategy is a month your competition is pulling ahead —
+      on bids, margins, compliance, and the people you're trying to keep.
+    </p>
+    <div class="cost-rows">
+      <div class="cost-row">
+        <div class="cost-bar"></div>
+        <div class="cost-content">
+          <div class="cost-label">Manual Estimating &amp; Bidding</div>
+          <p class="cost-body">Takeoffs, bid prep, and scope review still rely on human hours — slowing turnaround and introducing costly errors that AI-enabled competitors have already eliminated.</p>
+        </div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-bar"></div>
+        <div class="cost-content">
+          <div class="cost-label">Change Order &amp; RFI Backlog</div>
+          <p class="cost-body">Managing change orders and RFIs through email and spreadsheets delays approvals, disrupts schedules, and quietly erodes margins on every project.</p>
+        </div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-bar"></div>
+        <div class="cost-content">
+          <div class="cost-label">Safety &amp; Compliance Documentation</div>
+          <p class="cost-body">OSHA plans, incident reports, and safety orientations require extensive manual prep — and one missed document creates real liability and schedule risk.</p>
+        </div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-bar"></div>
+        <div class="cost-content">
+          <div class="cost-label">Subcontractor Coordination</div>
+          <p class="cost-body">Scheduling subs, tracking submittals, and managing payments across dozens of vendors is a full-time job done manually — one that AI handles in the background.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE CAN DO -->
+  <section id="what">
+    <p class="section-label">What We Can Do For Your Business</p>
+    <p class="what-subhead">AI built for the way your business actually operates.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-stat">50%</div>
+        <div class="what-rule"></div>
+        <p class="what-desc">Faster bid preparation with AI-assisted estimating</p>
+      </div>
+      <div class="what-card">
+        <div class="what-stat">60%</div>
+        <div class="what-rule"></div>
+        <p class="what-desc">Reduction in change order &amp; RFI processing time</p>
+      </div>
+      <div class="what-card">
+        <div class="what-stat">80%</div>
+        <div class="what-rule"></div>
+        <p class="what-desc">Less time on safety &amp; compliance documentation</p>
+      </div>
+      <div class="what-card">
+        <div class="what-stat" style="font-size:clamp(1.4rem,2.8vw,2.4rem);line-height:1.1;">More output.<br>Same team.</div>
+        <div class="what-rule"></div>
+        <p class="what-desc">Ship more work without adding headcount</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LET'S MEET -->
+  <section id="meet">
+    <div class="meet-left">
+      <h2 class="meet-headline">LET'S<br>MEET.</h2>
+      <div class="meet-rule"></div>
+      <p class="meet-note">No cost. No obligation.<br>Just a conversation about what's possible.</p>
+      <a href="mailto:[email@shiftwork.com]" class="meet-cta">Get in Touch</a>
+    </div>
+    <div class="meet-right">
+      <div class="meet-brand">SHIFTWORK</div>
+      <div class="meet-divider"></div>
+      <div class="meet-person-name">Jordan Farnworth</div>
+      <div class="meet-person-title">Co-Founder, AI Engineering</div>
+      <div class="meet-person-name">Zac Farnworth</div>
+      <div class="meet-person-title">Co-Founder, AI Implementation</div>
+      <div class="meet-divider"></div>
+      <div class="meet-contact">
+        <div>[email@shiftwork.com]</div>
+        <div>[phone]</div>
+        <div style="margin-top:0.8rem;"><a href="https://shiftwork.com">shiftwork.com</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">SHIFTWORK</span>
+    <span class="foot-note">© 2026 Shiftwork. All rights reserved.</span>
+  </footer>
+
+</body>
+</html>
